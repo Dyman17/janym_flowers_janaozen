@@ -57,6 +57,10 @@ const translations = {
     contactMeta: 'Быстрый ответ и свежие обновления',
     contactWhatsApp: 'Заказать в WhatsApp',
     contactInstagram: 'Открыть Instagram',
+    quotesTag: 'Цитаты',
+    quotesTitle: 'Немного тепла перед заказом',
+    quoteOne: 'Цветы говорят за вас, когда хочется больше нежности.',
+    quoteTwo: 'Свежий букет делает любой день заметнее и теплее.',
     footer1: 'JANYM гүлдер салоны · Жанаозен',
     footer2: 'Цветы, букеты и доставка по городу',
     orderMessage: 'Здравствуйте, хочу заказать букет JANYM',
@@ -124,6 +128,10 @@ const translations = {
     contactMeta: 'Жылдам жауап және жаңа жаңалықтар',
     contactWhatsApp: 'WhatsApp-та тапсырыс беру',
     contactInstagram: 'Instagram-ды ашу',
+    quotesTag: 'Дәйексөздер',
+    quotesTitle: 'Тапсырыс алдында аздап жылылық',
+    quoteOne: 'Гүлдер сіздің атыңыздан сөйлейді.',
+    quoteTwo: 'Жаңа букет кез келген күнді айқынырақ етеді.',
     footer1: 'JANYM гүлдер салоны · Жаңаөзен',
     footer2: 'Гүлдер, букеттер және қала бойынша жеткізу',
     orderMessage: 'Сәлеметсіз бе, JANYM-нан букетке тапсырыс бергім келеді',
@@ -190,6 +198,10 @@ const translations = {
     contactMeta: 'Fast replies and fresh updates',
     contactWhatsApp: 'Order on WhatsApp',
     contactInstagram: 'Open Instagram',
+    quotesTag: 'Quotes',
+    quotesTitle: 'A little warmth before ordering',
+    quoteOne: 'Flowers speak for you when words are not enough.',
+    quoteTwo: 'A fresh bouquet makes any day stand out and feel warmer.',
     footer1: 'JANYM flower salon · Zhanaozen',
     footer2: 'Flowers, bouquets, and city delivery',
     orderMessage: "Hello, I'd like to order a bouquet from JANYM",
@@ -275,6 +287,9 @@ function applyLocale(locale) {
   const infoCards = document.querySelectorAll('.info-card');
   const pricingTag = document.querySelector('.price-panel .section-tag');
   const addressTag = document.querySelector('.map-panel .section-tag');
+  const quotesTag = document.querySelector('.mobile-quotes .section-tag');
+  const quotesTitle = document.querySelector('.mobile-quotes h2');
+  const quoteTexts = document.querySelectorAll('.mobile-quotes__text');
   const pricingTitle = document.querySelector('.price-panel h2');
   const pricingNote = document.querySelector('.panel-note');
   const mapCtaLabel = document.querySelector('.map-panel__cta .button__label');
@@ -314,6 +329,12 @@ function applyLocale(locale) {
 
   if (pricingTag) pricingTag.textContent = copy.pricingTag;
   if (addressTag) addressTag.textContent = copy.addressTag;
+  if (quotesTag) quotesTag.textContent = copy.quotesTag;
+  if (quotesTitle) quotesTitle.textContent = copy.quotesTitle;
+  quoteTexts.forEach((text, index) => {
+    if (index === 0) text.textContent = copy.quoteOne;
+    if (index === 1) text.textContent = copy.quoteTwo;
+  });
   if (pricingTitle) pricingTitle.textContent = copy.pricingTitle;
   if (pricingNote) pricingNote.textContent = copy.pricingNote;
   if (mapCtaLabel) mapCtaLabel.textContent = copy.mapCta;
