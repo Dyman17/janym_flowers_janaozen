@@ -1302,21 +1302,29 @@ a {
 
 @media (max-width: 720px) {
   .decor {
-    opacity: 0.72;
+    opacity: 0.9;
   }
 
   .bouquet--left {
-    left: -280px;
-    top: 14vh;
-    width: 58vw;
+    left: -140px;
+    top: 12vh;
+    width: 56vw;
   }
 
   .bouquet--right {
-    display: none;
+    display: block;
+    right: -42px;
+    top: 54vh;
+    width: 40vw;
+    opacity: 0.7;
   }
 
   .bouquet--bottom {
-    display: none;
+    display: block;
+    right: -58px;
+    bottom: -86px;
+    width: 44vw;
+    opacity: 0.66;
   }
 
   .ribbon--a,
