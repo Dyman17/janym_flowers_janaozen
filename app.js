@@ -50,6 +50,13 @@ const translations = {
       'Напишите нам в WhatsApp, и мы соберём букет без лишних ожиданий.',
     bottomOrder: 'Заказать в WhatsApp',
     bottomTop: 'Вернуться наверх',
+    contactTag: 'Контакты и соцсети',
+    contactTitle: 'WhatsApp для заказа и Instagram для вдохновения',
+    contactText:
+      'Напишите в WhatsApp, чтобы оформить заказ, а в Instagram можно посмотреть свежие букеты и новые композиции.',
+    contactMeta: 'Быстрый ответ и свежие обновления',
+    contactWhatsApp: 'Заказать в WhatsApp',
+    contactInstagram: 'Открыть Instagram',
     footer1: 'JANYM гүлдер салоны · Жанаозен',
     footer2: 'Цветы, букеты и доставка по городу',
     orderMessage: 'Здравствуйте, хочу заказать букет JANYM',
@@ -110,6 +117,13 @@ const translations = {
       'WhatsApp-қа жазыңыз, біз букетіңізді артық күтусіз дайындаймыз.',
     bottomOrder: 'WhatsApp-та тапсырыс беру',
     bottomTop: 'Жоғарыға қайту',
+    contactTag: 'Байланыс және әлеуметтік желілер',
+    contactTitle: 'Тапсырыс үшін WhatsApp, шабыт үшін Instagram',
+    contactText:
+      'WhatsApp арқылы тапсырыс беріңіз, ал Instagram-нан жаңа гүл шоқтары мен жаңа композицияларды көре аласыз.',
+    contactMeta: 'Жылдам жауап және жаңа жаңалықтар',
+    contactWhatsApp: 'WhatsApp-та тапсырыс беру',
+    contactInstagram: 'Instagram-ды ашу',
     footer1: 'JANYM гүлдер салоны · Жаңаөзен',
     footer2: 'Гүлдер, букеттер және қала бойынша жеткізу',
     orderMessage: 'Сәлеметсіз бе, JANYM-нан букетке тапсырыс бергім келеді',
@@ -169,6 +183,13 @@ const translations = {
       'Message us on WhatsApp and we will prepare your bouquet without unnecessary waiting.',
     bottomOrder: 'Order on WhatsApp',
     bottomTop: 'Back to top',
+    contactTag: 'Contact and social media',
+    contactTitle: 'WhatsApp for orders and Instagram for inspiration',
+    contactText:
+      'Message us on WhatsApp to place an order, and check Instagram for fresh bouquets and new arrangements.',
+    contactMeta: 'Fast replies and fresh updates',
+    contactWhatsApp: 'Order on WhatsApp',
+    contactInstagram: 'Open Instagram',
     footer1: 'JANYM flower salon · Zhanaozen',
     footer2: 'Flowers, bouquets, and city delivery',
     orderMessage: "Hello, I'd like to order a bouquet from JANYM",
@@ -186,7 +207,7 @@ const state = {
 };
 
 const metaDescription = document.querySelector('meta[name="description"]');
-const orderLinks = document.querySelectorAll('[data-order-link], .hero__actions .button--primary, .bottom-cta__actions .button--primary');
+const orderLinks = document.querySelectorAll('[data-order-link]');
 const langButtons = document.querySelectorAll('[data-lang]');
 const themeToggle = document.querySelector('[data-theme-toggle]');
 const themeIcon = document.querySelector('.theme-toggle__icon');
@@ -254,19 +275,17 @@ function applyLocale(locale) {
   const infoCards = document.querySelectorAll('.info-card');
   const pricingTag = document.querySelector('.price-panel .section-tag');
   const addressTag = document.querySelector('.map-panel .section-tag');
-  const socialTag = document.querySelector('.social-panel .section-tag');
-  const quickOrderTag = document.querySelector('.bottom-cta .section-tag');
   const pricingTitle = document.querySelector('.price-panel h2');
   const pricingNote = document.querySelector('.panel-note');
   const mapCtaLabel = document.querySelector('.map-panel__cta .button__label');
   const mapAddress = document.querySelector('.map-panel__footer strong');
   const mapCity = document.querySelector('.map-panel__footer span');
-  const bottomTitle = document.querySelector('.bottom-cta h2');
-  const bottomOrderLabel = document.querySelector('.bottom-cta .button--primary .button__label');
-  const bottomTopButton = document.querySelector('.bottom-cta .button--secondary');
-  const socialTitle = document.querySelector('.social-panel h2');
-  const socialText = document.querySelector('.social-panel__text');
-  const socialButtonLabel = document.querySelector('.social-panel .button__label');
+  const contactTag = document.querySelector('.contact-panel .section-tag');
+  const contactTitle = document.querySelector('.contact-panel h2');
+  const contactText = document.querySelector('.contact-panel__text');
+  const contactMeta = document.querySelector('.contact-panel__note');
+  const contactWhatsAppLabel = document.querySelector('.contact-panel__button--primary .button__label');
+  const contactInstagramLabel = document.querySelector('.contact-panel .button--instagram .button__label');
   const footerText = document.querySelectorAll('.footer p');
 
   if (brandSmall) brandSmall.textContent = copy.brandSmall;
@@ -295,19 +314,17 @@ function applyLocale(locale) {
 
   if (pricingTag) pricingTag.textContent = copy.pricingTag;
   if (addressTag) addressTag.textContent = copy.addressTag;
-  if (socialTag) socialTag.textContent = copy.socialTag;
-  if (quickOrderTag) quickOrderTag.textContent = copy.quickOrderTag;
   if (pricingTitle) pricingTitle.textContent = copy.pricingTitle;
   if (pricingNote) pricingNote.textContent = copy.pricingNote;
   if (mapCtaLabel) mapCtaLabel.textContent = copy.mapCta;
   if (mapAddress) mapAddress.textContent = copy.address;
   if (mapCity) mapCity.textContent = copy.cityCountry;
-  if (bottomTitle) bottomTitle.textContent = copy.bottomTitle;
-  if (bottomOrderLabel) bottomOrderLabel.textContent = copy.bottomOrder;
-  if (bottomTopButton) bottomTopButton.textContent = copy.bottomTop;
-  if (socialTitle) socialTitle.textContent = copy.socialTitle;
-  if (socialText) socialText.textContent = copy.socialText;
-  if (socialButtonLabel) socialButtonLabel.textContent = copy.socialButton;
+  if (contactTag) contactTag.textContent = copy.contactTag;
+  if (contactTitle) contactTitle.textContent = copy.contactTitle;
+  if (contactText) contactText.textContent = copy.contactText;
+  if (contactMeta) contactMeta.textContent = copy.contactMeta;
+  if (contactWhatsAppLabel) contactWhatsAppLabel.textContent = copy.contactWhatsApp;
+  if (contactInstagramLabel) contactInstagramLabel.textContent = copy.contactInstagram;
   if (footerText[0]) footerText[0].textContent = copy.footer1;
   if (footerText[1]) footerText[1].textContent = copy.footer2;
 

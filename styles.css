@@ -508,7 +508,8 @@ a {
 
 .price-panel,
 .map-panel,
-.bottom-cta {
+.bottom-cta,
+.contact-panel {
   padding: 28px;
 }
 
@@ -528,17 +529,46 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  padding: 18px 20px;
+  position: relative;
+  min-height: 108px;
+  padding: 18px 20px 18px 112px;
   border-radius: var(--radius-md);
   background: var(--panel);
   border: 1px solid var(--panel-border);
+  overflow: hidden;
 }
 
-.menu-row span {
+.menu-row__flower {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 104px;
+  height: auto;
+  transform: translateY(-50%);
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 24px rgba(37, 25, 74, 0.18));
+  z-index: 0;
+}
+
+.menu-row__flower--rose {
+  width: 96px;
+}
+
+.menu-row__flower--spray {
+  width: 108px;
+}
+
+.menu-row__name {
+  position: relative;
+  z-index: 1;
   font-size: 1.02rem;
+  font-weight: 600;
 }
 
 .menu-row strong {
+  position: relative;
+  z-index: 1;
   font-size: 1.55rem;
 }
 
@@ -687,6 +717,69 @@ a {
   box-shadow: 0 24px 50px rgba(160, 46, 121, 0.34);
 }
 
+.contact-panel {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.contact-panel__copy {
+  max-width: 60ch;
+}
+
+.contact-panel__copy h2 {
+  margin: 18px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.1rem, 3vw, 3.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+.contact-panel__text {
+  margin: 14px 0 0;
+  max-width: 44ch;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.contact-panel__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.contact-panel__handle,
+.contact-panel__note {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.contact-panel__note {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.contact-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  min-width: min(100%, 340px);
+}
+
+.contact-panel__button {
+  min-width: 220px;
+}
+
 .footer {
   max-width: var(--max);
   margin: 0 auto;
@@ -721,17 +814,12 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .social-panel {
+  .contact-panel {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .bottom-cta {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .bottom-cta__actions {
+  .contact-panel__actions {
     justify-content: flex-start;
   }
 }
@@ -751,11 +839,11 @@ a {
   }
 
   .hero h1 {
-    max-width: 12ch;
+    max-width: 13ch;
   }
 
   .hero__visual {
-    min-height: 500px;
+    min-height: 440px;
   }
 
   .logo-card {
@@ -783,7 +871,8 @@ a {
 
   .price-panel,
   .map-panel,
-  .bottom-cta {
+  .bottom-cta,
+  .contact-panel {
     padding: 22px;
   }
 
@@ -804,7 +893,9 @@ a {
   }
 
   .hero h1 {
-    font-size: clamp(2.8rem, 15vw, 4rem);
+    font-size: clamp(2.35rem, 11vw, 3.2rem);
+    max-width: 14ch;
+    line-height: 1.02;
   }
 
   .lead {
@@ -816,13 +907,31 @@ a {
   }
 
   .hero__actions,
-  .bottom-cta__actions {
+  .contact-panel__actions {
     width: 100%;
   }
 
   .hero__actions .button,
-  .bottom-cta__actions .button {
+  .contact-panel__actions .button {
     width: 100%;
+  }
+
+  .hero__visual {
+    min-height: auto;
+    align-items: center;
+  }
+
+  .logo-card {
+    width: min(100%, 360px);
+  }
+
+  .logo-card__image {
+    width: min(72%, 300px);
+  }
+
+  .floating-card--price,
+  .floating-card--hours {
+    display: none;
   }
 
   .hero__chips span {
@@ -832,8 +941,25 @@ a {
   }
 
   .menu-row {
-    align-items: flex-start;
-    flex-direction: column;
+    min-height: 90px;
+    padding: 14px 14px 14px 82px;
+  }
+
+  .menu-row__flower {
+    width: 72px;
+    left: -6px;
+  }
+
+  .menu-row__flower--rose {
+    width: 66px;
+  }
+
+  .menu-row__flower--spray {
+    width: 74px;
+  }
+
+  .contact-panel__button {
+    min-width: 0;
   }
 
   .map-panel__header {
@@ -1176,23 +1302,26 @@ a {
 
 @media (max-width: 720px) {
   .decor {
-    opacity: 0.78;
+    opacity: 0.72;
   }
 
   .bouquet--left {
-    left: -290px;
-    top: 22vh;
-    width: 72vw;
+    left: -280px;
+    top: 14vh;
+    width: 58vw;
   }
 
   .bouquet--right {
-    right: -260px;
-    top: 18vh;
-    width: 62vw;
+    display: none;
   }
 
   .bouquet--bottom {
     display: none;
+  }
+
+  .ribbon--a,
+  .ribbon--b {
+    width: 76vw;
   }
 
   .ribbon--c,
