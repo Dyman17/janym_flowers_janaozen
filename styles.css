@@ -1316,7 +1316,7 @@ a {
   }
 
   .decor {
-    opacity: 0.9;
+    opacity: 1;
   }
 
   .hero {
@@ -1384,25 +1384,26 @@ a {
   }
 
   .bouquet--left {
-    left: -140px;
-    top: 12vh;
-    width: 56vw;
+    left: -108px;
+    top: 10vh;
+    width: 62vw;
+    opacity: 0.96;
   }
 
   .bouquet--right {
     display: block;
-    right: -42px;
-    top: 54vh;
-    width: 40vw;
-    opacity: 0.7;
+    right: -6px;
+    top: 14vh;
+    width: 30vw;
+    opacity: 0.82;
   }
 
   .bouquet--bottom {
     display: block;
-    right: -58px;
-    bottom: -86px;
-    width: 44vw;
-    opacity: 0.66;
+    right: -24px;
+    bottom: -42px;
+    width: 42vw;
+    opacity: 0.72;
   }
 
   .ribbon--a,
