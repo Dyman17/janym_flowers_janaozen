@@ -223,7 +223,6 @@ const orderLinks = document.querySelectorAll('[data-order-link]');
 const langButtons = document.querySelectorAll('[data-lang]');
 const themeToggle = document.querySelector('[data-theme-toggle]');
 const themeIcon = document.querySelector('.theme-toggle__icon');
-const themeLabel = document.querySelector('.theme-toggle__label');
 const langSwitch = document.querySelector('.lang-switch');
 
 function getLocaleCopy(locale) {
@@ -375,10 +374,6 @@ function applyThemeLabel() {
 
   if (themeIcon) {
     themeIcon.textContent = isDark ? '☾' : '☼';
-  }
-
-  if (themeLabel) {
-    themeLabel.textContent = isDark ? copy.themeDarkLabel : copy.themeLightLabel;
   }
 
   if (langSwitch) {
