@@ -223,7 +223,10 @@ const orderLinks = document.querySelectorAll('[data-order-link]');
 const langButtons = document.querySelectorAll('[data-lang]');
 const themeToggle = document.querySelector('[data-theme-toggle]');
 const themeIcon = document.querySelector('.theme-toggle__icon');
+const themeLabel = document.querySelector('.theme-toggle__label');
 const langSwitch = document.querySelector('.lang-switch');
+let topbarDensityRaf = 0;
+let topbarDensityObserver = null;
 
 function getLocaleCopy(locale) {
   return translations[locale] || translations.ru;
@@ -351,6 +354,7 @@ function applyLocale(locale) {
   setOrderLinks(copy.orderMessage);
   setLanguageButtons(locale);
   applyThemeLabel();
+  scheduleTopbarDensity();
 }
 
 function applyTheme(theme) {
@@ -376,9 +380,65 @@ function applyThemeLabel() {
     themeIcon.textContent = isDark ? '☾' : '☼';
   }
 
+  if (themeLabel) {
+    themeLabel.textContent = isDark ? copy.themeDarkLabel : copy.themeLightLabel;
+  }
+
   if (langSwitch) {
     langSwitch.setAttribute('aria-label', copy.langSelectorLabel);
   }
+
+  scheduleTopbarDensity();
+}
+
+function applyTopbarDensity() {
+  const root = document.documentElement;
+  const actions = document.querySelector('.topbar__actions');
+
+  if (!root || !actions) {
+    return;
+  }
+
+  root.classList.remove('is-compact-topbar');
+
+  const needsCompact =
+    actions.scrollWidth > actions.clientWidth ||
+    actions.getBoundingClientRect().height > 56;
+
+  root.classList.toggle('is-compact-topbar', needsCompact);
+}
+
+function scheduleTopbarDensity() {
+  if (topbarDensityRaf) {
+    return;
+  }
+
+  topbarDensityRaf = window.requestAnimationFrame(() => {
+    topbarDensityRaf = 0;
+    applyTopbarDensity();
+  });
+}
+
+function observeTopbarDensity() {
+  if (typeof ResizeObserver !== 'function') {
+    return;
+  }
+
+  const actions = document.querySelector('.topbar__actions');
+
+  if (!actions) {
+    return;
+  }
+
+  if (topbarDensityObserver) {
+    topbarDensityObserver.disconnect();
+  }
+
+  topbarDensityObserver = new ResizeObserver(() => {
+    scheduleTopbarDensity();
+  });
+
+  topbarDensityObserver.observe(actions);
 }
 
 function initLocale() {
@@ -413,3 +473,7 @@ if (themeToggle) {
 
 initTheme();
 initLocale();
+scheduleTopbarDensity();
+observeTopbarDensity();
+
+window.addEventListener('resize', scheduleTopbarDensity, { passive: true });
